@@ -1,0 +1,19 @@
+Project Description
+
+Simple Internet shop.
+- MySQL database with customized MySQL JDBC driver will be a container for products
+- Spring MVC for Model ( POJO`s) View (JSP pages with JSTagLibs perhaps we can use JSF + AJAX support for best switching)
+Controllers to obtain a connection between Model and View. Dependency Injection to create an independent
+connections between classes and objects.
+- Servlets for request / respond between client and web shop Server. As Server we will use Jetty container
+- We will also use a simple CSS framework Bootstrap 3 with Jumbotron and some other stuff...
+- EJB as pattern of some bean examples, to provide a business logic between classes.
+- We will input failing case logs in Error log4j2 Trace in File , and Info logs for statistics to another file appender.
+- We will use a simple DBunit test for Databases, mock for imitation of client, who made an order, we will also use
+hamcrest matcher , TestNG may be implements as main Testing system, supporting multithreading in case if two or more
+clients decided to order something.
+- Russian/ English internationalization.
+Preferences to involve some design patterns , except DAO/Service which will be used by default in CRUD access , in case
+if our development will turn in ORM side.
+
+
