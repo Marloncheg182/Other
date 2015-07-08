@@ -15,20 +15,15 @@ public class PreOrder {
     private Integer quantity;
 
     @OneToOne
-    @JoinColumn(name = "phone_fk", nullable = false)
-    private Phone phone;
-
-    @OneToOne
-    @JoinColumn(name = "phone_fk", nullable = false)
-    private Tablet tablet;
+    @JoinColumn(name = "model_fk", nullable = false)
+    private Model model;
 
     public PreOrder() {
     }
 
-    public PreOrder(Integer quantity, Phone phone, Tablet tablet) {
+    public PreOrder(Integer quantity, Model model) {
         this.quantity = quantity;
-        this.phone = phone;
-        this.tablet = tablet;
+        this.model = model;
 
 
     }
@@ -41,8 +36,8 @@ public class PreOrder {
         return quantity;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public Model getModel() {
+        return model;
     }
 
 
@@ -50,26 +45,15 @@ public class PreOrder {
         this.quantity = quantity;
     }
 
-    public void setPhone(Phone phone) {
-        this.phone = phone;
+    public void setModel(Model model) {
+        this.model = model;
     }
 
-    public void setTablet(Tablet tablet) {
-        this.tablet = tablet;
+
+    public Float getTotalModelPrice() {
+        return model.getCost() * quantity;
     }
 
-    public Tablet getTablet() {
-        return tablet;
-
-    }
-
-    public Float getTotalPhonePrice() {
-        return phone.getCost() * quantity;
-    }
-
-    public Float getTotalTabletPrice() {
-        return tablet.getCost() * quantity;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -80,8 +64,7 @@ public class PreOrder {
 
         if (!id.equals(preOrder.id)) return false;
         if (!quantity.equals(preOrder.quantity)) return false;
-        if (!phone.equals(preOrder.phone)) return false;
-        if (!tablet.equals(preOrder.tablet)) return false;
+        if (!model.equals(preOrder.model)) return false;
         return true;
 
     }
@@ -90,8 +73,7 @@ public class PreOrder {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + quantity.hashCode();
-        result = 31 * result + phone.hashCode();
-        result = 31 * result + tablet.hashCode();
+        result = 31 * result + model.hashCode();
         return result;
     }
 
@@ -100,8 +82,7 @@ public class PreOrder {
         return "PreOrder{" +
                 "id=" + id +
                 ", quantity=" + quantity +
-                ", phone=" + phone +
-                ", tablet=" + tablet +
+                ", phone=" + model +
                 '}';
     }
 }

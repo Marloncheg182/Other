@@ -41,12 +41,7 @@ public class Device {
     @OneToMany(mappedBy = "device", cascade = CascadeType.ALL)
     @OrderBy("model ASC")
     @XmlTransient
-    private List<Phone> phones;
-
-    @OneToMany(mappedBy = "device", cascade = CascadeType.ALL)
-    @OrderBy("model ASC")
-    @XmlTransient
-    private List<Tablet> tablets;
+    private List<Model> models;
 
     public static final String GET_BY_CATEGORY = "Device.getByCategory";
     public static final String GET_ALL = "Device.getAll";
@@ -95,26 +90,16 @@ public class Device {
     }
 
 
-    public List<Phone> getPhones() {
-        return phones;
+    public List<Model> getModels() {
+        return models;
     }
 
-
-    public List<Tablet> getTablets() {
-        return tablets;
+    public void addModel(Model model) {
+        if (models == null)
+            models = new ArrayList<Model>();
+        models.add(model);
     }
 
-    public void addPhone(Phone phone) {
-        if (phones == null)
-            phones = new ArrayList<Phone>();
-        phones.add(phone);
-    }
-
-    public void addTablet(Tablet tablet) {
-        if (tablets == null)
-            tablets = new ArrayList<Tablet>();
-        tablets.add(tablet);
-    }
 
     @Override
     public boolean equals(Object o) {

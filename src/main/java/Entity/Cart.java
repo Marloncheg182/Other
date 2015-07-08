@@ -3,8 +3,7 @@ package Entity;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.io.Serializable;
+
 
 /**
  * @author Romanenchuk Oleg
@@ -13,11 +12,8 @@ import java.io.Serializable;
 
 public class Cart {
 
-    @NotNull   // type of purchase
-    private Phone phone;
-
-    @NotNull   // type of purchase
-    private Tablet tablet;
+    @NotNull   // purchase
+    private Model model;
 
     @NotNull
     @Min(10)  // min 10 UAH
@@ -30,27 +26,18 @@ public class Cart {
     public Cart() {
     }
 
-    public Cart(Phone phone, Tablet tablet, Integer price, Integer quantity) {
-        this.phone = phone;
-        this.tablet = tablet;
+    public Cart(Model model, Integer price, Integer quantity) {
+        this.model = model;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public Model getModel() {
+        return model;
     }
 
-    public void setPhone(Phone phone) {
-        this.phone = phone;
-    }
-
-    public Tablet getTablet() {
-        return tablet;
-    }
-
-    public void setTablet(Tablet tablet) {
-        this.tablet = tablet;
+    public void setModel(Model model) {
+        this.model = model;
     }
 
     public Integer getPrice() {
@@ -73,12 +60,8 @@ public class Cart {
      * Calculate the cost sum of your purchases in cart
      */
 
-    public Float getTotalPhonePrice() {
-        return phone.getCost() * quantity;
-    }
-
-    public Float getTotalTabletPrice() {
-        return tablet.getCost() * quantity;
+    public Float getTotalModelPrice() {
+        return model.getCost() * quantity;
     }
 
 
@@ -89,8 +72,7 @@ public class Cart {
 
         Cart cart = (Cart) o;
 
-        if (!phone.equals(cart.phone)) return false;
-        if (!tablet.equals(cart.tablet)) return false;
+        if (!model.equals(cart.model)) return false;
         if (!price.equals(cart.price)) return false;
         return quantity.equals(cart.quantity);
 
@@ -98,8 +80,7 @@ public class Cart {
 
     @Override
     public int hashCode() {
-        int result = phone.hashCode();
-        result = 31 * result + tablet.hashCode();
+        int result = model.hashCode();
         result = 31 * result + price.hashCode();
         result = 31 * result + quantity.hashCode();
         return result;
@@ -108,8 +89,7 @@ public class Cart {
     @Override
     public String toString() {
         return "Cart{" +
-                "phone=" + phone +
-                ", tablet=" + tablet +
+                "phone=" + model +
                 ", price=" + price +
                 ", quantity=" + quantity +
                 '}';

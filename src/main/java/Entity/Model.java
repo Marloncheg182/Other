@@ -11,15 +11,14 @@ import javax.xml.bind.annotation.XmlTransient;
 /**
  * @author Romanenchuk Oleg
  */
-
 @Entity
 @NamedQueries({
-        @NamedQuery(name = Tablet.GET_BY_DEVICE_ID, query = "SELECT t FROM Tablet t WHERE t.device.id= :deviceId"),
-        @NamedQuery(name = Tablet.SEARCH, query = "SELECT t FROM Tablet t WHERE(t.model) LIKE :keyword OR UPPER(t.device.model) LIKE :keyword ORDER BY t.device.category.type, t.device.model"),
-        @NamedQuery(name = Tablet.GET_ALL, query = "SELECT t FROM Table t")
+        @NamedQuery(name = Model.GET_BY_DEVICE_ID, query = "SELECT m FROM Model m WHERE m.device.id= :deviceId"),
+        @NamedQuery(name = Model.SEARCH, query = "SELECT m FROM Model m WHERE(m.model) LIKE :keyword OR UPPER(m.device.model) LIKE :keyword ORDER BY m.device.category.type, m.device.model"),
+        @NamedQuery(name = Model.GET_ALL, query = "SELECT m FROM Model m")
 })
 @XmlRootElement
-public class Tablet {
+public class Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,16 +42,17 @@ public class Tablet {
     @XmlTransient
     private Device device;
 
-    public static final String GET_BY_DEVICE_ID = "Tablet.getByDeviceId";
 
-    public static final String SEARCH = "Tablet.search";
+    public static final String GET_BY_DEVICE_ID = "Phone.getByDeviceId";
 
-    public static final String GET_ALL = "Tablet.getAll";
+    public static final String SEARCH = "Phone.search";
 
-    public Tablet() {
+    public static final String GET_ALL = "Phone.getAll";
+
+    public Model() {
     }
 
-    public Tablet(String model, String characters, Float cost, String photo, Device device) {
+    public Model(String model, String characters, Float cost, String photo, Device device) {
         this.model = model;
         this.characters = characters;
         this.cost = cost;
@@ -108,15 +108,16 @@ public class Tablet {
         this.device = device;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Tablet)) return false;
+        if (!(o instanceof Model)) return false;
 
-        Tablet tablet = (Tablet) o;
+        Model model = (Model) o;
 
-        if (!model.equals(tablet.model)) return false;
-        if (!photo.equals(tablet.photo)) return false;
+        if (!this.model.equals(model.model)) return false;
+        if (!photo.equals(model.photo)) return false;
         return true;
 
     }
@@ -130,14 +131,13 @@ public class Tablet {
 
     @Override
     public String toString() {
-        return "Tablet{" +
+        return "Phone{" +
                 "id=" + id +
                 ", model='" + model + '\'' +
                 ", characters='" + characters + '\'' +
                 ", cost=" + cost +
                 ", photo='" + photo + '\'' +
-                ", device=" + device +
+                ", device=" + device + '\'' +
                 '}';
     }
 }
-

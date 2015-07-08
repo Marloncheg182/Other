@@ -11,7 +11,9 @@ import java.util.List;
 @Entity
 @Table(name = "order")
 @XmlRootElement
-@NamedQueries({})
+@NamedQueries({
+        @NamedQuery(name = Order.GET_ALL, query = "SELECT o FROM Order o")
+})
 public class Order {
 
     @Id
@@ -37,6 +39,8 @@ public class Order {
     @Embedded
     private Payment payment = new Payment();
 
+    public static final String GET_ALL = "Order.getAll";
+
     public Order() {
     }
 
@@ -57,7 +61,7 @@ public class Order {
         Float all = 0f;
 
         for (PreOrder preOrder : preOrders) {
-            all += (preOrder.getTotalPhonePrice() + preOrder.getTotalTabletPrice());
+            all += (preOrder.getTotalModelPrice());
         }
         return all;
     }
