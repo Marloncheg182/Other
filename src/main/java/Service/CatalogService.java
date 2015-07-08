@@ -194,4 +194,6 @@ public class CatalogService implements Serializable {
 
         removeModel(findModel(modelId));
     }
+
+
 }

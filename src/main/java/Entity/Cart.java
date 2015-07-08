@@ -32,6 +32,11 @@ public class Cart {
         this.quantity = quantity;
     }
 
+    public Cart(Model model, Integer quantity) {
+        this.model = model;
+        this.quantity = quantity;
+    }
+
     public Model getModel() {
         return model;
     }

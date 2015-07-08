@@ -70,10 +70,10 @@ public class Client implements Serializable {
 
     public static final String GET_ALL = "Client.getAll";
 
-    public Client(String root, String s, String user, String user1, String s1, Contacts contacts) {
+    public Client() {
     }
 
-    public Client(String login, String password, String firstname, String lastname, String email, Contacts contacts, Date birthDate) {
+    public Client(String login, String password, String firstname, String lastname, String email, Contacts contacts) {
         this.login = login;
         this.password = password;
         this.firstname = firstname;
