@@ -1,6 +1,7 @@
 Project Description
 
 Simple Internet shop.
+Some specifications:
 - MySQL database with customized MySQL JDBC driver will be a container for products
 - Spring MVC for Model ( POJO`s) View (JSP pages with JSTagLibs perhaps we can use JSF + AJAX support for best switching)
 Controllers to obtain a connection between Model and View. Dependency Injection to create an independent
