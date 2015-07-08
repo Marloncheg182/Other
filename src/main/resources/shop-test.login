@@ -1,0 +1,3 @@
+LoginModule{
+security.LoginModule.required;
+};

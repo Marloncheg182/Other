@@ -64,8 +64,7 @@ public class PreOrder {
 
         if (!id.equals(preOrder.id)) return false;
         if (!quantity.equals(preOrder.quantity)) return false;
-        if (!model.equals(preOrder.model)) return false;
-        return true;
+        return model.equals(preOrder.model);
 
     }
 

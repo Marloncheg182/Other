@@ -13,7 +13,6 @@ import javax.security.auth.Subject;
 import javax.security.auth.callback.*;
 import javax.security.auth.login.LoginException;
 import javax.security.auth.spi.LoginModule;
-import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -24,7 +23,6 @@ public class LoginningModule implements LoginModule {
 
     private CallbackHandler callbackHandler;
     private ClientService clientService;
-    private BeanManager beanManager;
 
     private ClientService getClientService() {
         if (clientService != null) {
@@ -33,7 +31,7 @@ public class LoginningModule implements LoginModule {
 
         try {
             Context context = new InitialContext();
-            beanManager = (BeanManager) context.lookup("java:comp/BeanManager");
+            BeanManager beanManager = (BeanManager) context.lookup("java:comp/BeanManager");
             Bean<?> bean = beanManager.getBeans(ClientService.class).iterator().next();
             CreationalContext crctx = beanManager.createCreationalContext(bean);
             clientService = ((ClientService) beanManager.getReference(bean, ClientService.class, crctx));

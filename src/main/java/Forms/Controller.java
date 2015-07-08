@@ -17,7 +17,8 @@ import java.util.logging.Logger;
  */
 
 @Loggson
-abstract class Controller {
+
+public class Controller {
 
     @Inject
     private transient Logger logger;

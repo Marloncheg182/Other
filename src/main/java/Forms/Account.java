@@ -37,9 +37,10 @@ public class Account extends Controller implements Serializable {
     @LoggedIn
     private Client loggedIn;
 
+    @SuppressWarnings("CdiUnproxyableBeanTypesInspection")
     @Inject
     @SessionScoped
-    private transient LoginContext loginContext;
+    private LoginContext loginContext;
 
     public String doLogin() throws LoginException {
         if ("".equals(profile.getLogin())) {

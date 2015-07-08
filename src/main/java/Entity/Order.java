@@ -122,8 +122,7 @@ public class Order {
         Order order = (Order) o;
 
         if (!orderDate.equals(order.orderDate)) return false;
-        if (!client.equals(order.client)) return false;
-        return true;
+        return client.equals(order.client);
 
     }
 

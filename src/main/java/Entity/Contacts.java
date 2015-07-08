@@ -99,9 +99,7 @@ public class Contacts {
         if (!country.equals(contacts.country)) return false;
         if (!city.equals(contacts.city)) return false;
         if (region.equals(contacts.region)) return false;
-        if (!index.equals(contacts.index)) return false;
-
-        return true;
+        return index.equals(contacts.index);
 
     }
 

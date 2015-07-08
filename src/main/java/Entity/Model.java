@@ -117,8 +117,7 @@ public class Model {
         Model model = (Model) o;
 
         if (!this.model.equals(model.model)) return false;
-        if (!photo.equals(model.photo)) return false;
-        return true;
+        return photo.equals(model.photo);
 
     }
 

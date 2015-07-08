@@ -50,8 +50,7 @@ public class Payment {
 
         Payment payment = (Payment) o;
 
-        if (!accountNumber.equals(payment.accountNumber)) return false;
-        return true;
+        return accountNumber.equals(payment.accountNumber);
 
     }
 

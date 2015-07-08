@@ -93,9 +93,8 @@ public class Category {
 
         Category category = (Category) obj;
 
-        if (!type.equals(category.type)) return false;
+        return type.equals(category.type);
 
-        return true;
     }
 
     @Override

@@ -70,8 +70,7 @@ public class Client implements Serializable {
 
     public static final String GET_ALL = "Client.getAll";
 
-    public Client() {
-    }
+
 
     public Client(String login, String password, String firstname, String lastname, String email, Contacts contacts) {
         this.login = login;
@@ -81,6 +80,9 @@ public class Client implements Serializable {
         this.email = email;
         this.contacts = contacts;
         this.birthDate = birthDate;
+    }
+
+    public Client() {
     }
 
     public Long getId() {
@@ -200,8 +202,6 @@ public class Client implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Client)) return false;
-
-        Client client = (Client) o;
 
         return true;
 
