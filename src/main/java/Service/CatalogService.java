@@ -72,6 +72,13 @@ public class CatalogService implements Serializable {
         manager.remove(manager.merge(category));
     }
 
+    public void removeCategoryById(Long categoryId) {
+        if (categoryId == null)
+            throw new ValidationException("Wrong id");
+
+        remove(findCategoryById(categoryId));
+    }
+
     public List<Device> findDevice(String categoryType) {
         if (categoryType == null)
             throw new ValidationException("Wrong type");
@@ -90,6 +97,10 @@ public class CatalogService implements Serializable {
             device.getModels();
         }
         return device;
+    }
+    public List<Device> findAllDevices(){
+        TypedQuery<Device> query = manager.createNamedQuery(Device.GET_ALL, Device.class);
+        return query.getResultList();
     }
 
 
